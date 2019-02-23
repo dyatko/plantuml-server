@@ -26,7 +26,7 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.mortbay.jetty</groupId>
+        <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>${jetty.version}</version>
         <configuration>
@@ -34,12 +34,9 @@
           <webApp>
             <contextPath>${jetty.contextpath}</contextPath>
           </webApp>
-          <systemProperties>
-            <systemProperty>
-              <name>jetty.port</name>
-              <value>${jetty.port}</value>
-            </systemProperty>
-          </systemProperties>
+          <httpConnector>
+            <port>${jetty.http.port}</port>
+          </httpConnector>
         </configuration>
       </plugin>
         <plugin>
@@ -53,9 +50,9 @@
                     <configuration>
                         <artifactItems>
                             <artifactItem>
-                                <groupId>org.mortbay.jetty</groupId>
+                                <groupId>org.eclipse.jetty</groupId>
                                 <artifactId>jetty-runner</artifactId>
-                                <version>8.1.9.v20130131</version>
+                                <version>9.4.15.v20190215</version>
                                 <destFileName>jetty-runner.jar</destFileName>
                             </artifactItem>
                         </artifactItems>
@@ -112,7 +109,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>   
+      </plugin>
     </plugins>
   </build>
   <reporting>
@@ -129,7 +126,7 @@
             </reports>
           </reportSet>
         </reportSets>
-      </plugin>    
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -154,7 +151,7 @@
         <configuration>
           <configLocation>${basedir}/src/main/config/checkstyle.xml</configLocation>
           <encoding>UTF-8</encoding>
-          <linkXRef>false</linkXRef>          
+          <linkXRef>false</linkXRef>
         </configuration>
         <reportSets>
           <reportSet>
@@ -162,17 +159,16 @@
               <report>checkstyle</report>
             </reports>
           </reportSet>
-        </reportSets>        
+        </reportSets>
       </plugin>
     </plugins>
   </reporting>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jetty.version>8.0.4.v20111024</jetty.version>
-    <jetty.port>8080</jetty.port>
+    <jetty.version>9.4.15.v20190215</jetty.version>
+    <jetty.http.port>8181</jetty.http.port>
     <jetty.contextpath>/plantuml</jetty.contextpath>
-    <maven.build.timestamp.format>yyyyMMdd-HHmm
-    </maven.build.timestamp.format>
+    <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
     <timestamp>${maven.build.timestamp}</timestamp>
   </properties>
   <dependencies>
@@ -223,7 +219,7 @@
     <dependency>
       <groupId>org.eclipse.jetty.aggregate</groupId>
       <artifactId>jetty-all</artifactId>
-      <version>${jetty.version}</version>
+      <version>8.2.0.v20160908</version>
       <scope>test</scope>
     </dependency>
     <dependency>
