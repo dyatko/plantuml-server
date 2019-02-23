@@ -1,1 +1,1 @@
-web: mvn -Djetty.http.port=$PORT jetty:run
+web: java -Djetty.contextpath=/ -Djetty.http.port=$PORT -jar target/dependency/jetty-runner.jar target/plantuml.war
