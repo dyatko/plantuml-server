@@ -5,9 +5,9 @@
         <Set name="port"><Property name="jetty.http.port" default="8080"/></Set>
     </New>
     <New id="httpConfig" class="org.eclipse.jetty.server.HttpConfiguration">
-        <Set name="outputBufferSize">32768</Set>
-        <Set name="requestHeaderSize">50000</Set>
-        <Set name="responseHeaderSize">50000</Set>
+        <Set name="outputBufferSize"><SystemProperty name="outputBufferSize" default="50000"/></Set>
+        <Set name="requestHeaderSize"><SystemProperty name="requestHeaderSize" default="50000"/></Set>
+        <Set name="responseHeaderSize"><SystemProperty name="responseHeaderSize" default="50000"/></Set>
     </New>
     <Call name="addConnector">
         <Arg>
