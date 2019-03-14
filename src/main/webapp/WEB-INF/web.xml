@@ -3,6 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	<display-name>plantuml</display-name>
+	<filter>
+		<filter-name>AWSXRayServletFilter</filter-name>
+		<filter-class>com.amazonaws.xray.javax.servlet.AWSXRayServletFilter</filter-class>
+		<init-param>
+			<param-name>fixedName</param-name>
+			<param-value>plantuml</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>AWSXRayServletFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
 	<context-param>
 		<param-name>org.eclipse.jetty.servlet.Default.welcomeServlets</param-name>
 		<param-value>exact</param-value>
